@@ -1,0 +1,101 @@
+def puntaje(a):
+    dic_puntajes={}
+    values = []
+    puntaje=0
+    valor = 0
+    for i in (a):
+        values = a[i]
+        for j in range (len(values)):
+            if j == 0:
+                if str(values[0]).upper() == "SI":
+                    puntaje+=10
+            if j == 1:
+                if str(values[1]).upper() == "SI":
+                    puntaje+=10
+            if j == 2:
+                if str(values[2]).upper() == "SI":
+                    puntaje+=8
+            if j == 3:
+                if str(values[3]).upper() == "SI":
+                    puntaje+=9
+            if j == 4:
+                if str(values[4]).upper() == "SI":
+                    puntaje+=9
+            if j == 5:
+                if str(values[5]).upper() == "SI":
+                    puntaje+=10
+            if j == 6:
+                if str(values[6]).upper() == "SI":
+                    puntaje+=2
+            if j == 7:
+                valor = int(values[7])
+                puntaje+=(10*valor)
+            if j == 8:
+                if str(values[8]).upper() == "SI":
+                    puntaje+=8
+            if j == 9:
+                if str(values[9]).upper() == "SI":
+                    puntaje+=6
+            if j == 10:
+                if str(values[10]).upper() == "SI":
+                    puntaje+=9
+            if j == 11:
+                if str(values[11]).upper() == "SI":
+                    puntaje+=10
+            if j == 12:
+                if str(values[12]).upper() == "SI":
+                    puntaje+=20
+            if j == 13:
+                if str(values[13]).upper() == "SI":
+                    puntaje+=10
+            if j == 14:
+                if str(values[14]).upper() == "SI":
+                    puntaje += 8
+            if j == 15:
+                if str(values[15]).upper() == "SI":
+                    puntaje += 10
+            if j == 16:
+                if str(values[16]).upper() == "SI":
+                    puntaje += 10
+            if j == 17:
+                if str(values[17]).upper() == "SI":
+                    puntaje += 20
+            if j == 18:
+                if str(values[18]).upper() == "SI":
+                    puntaje += 15
+            if j == 19:
+                if str(values[19]).upper() == "SI":
+                    puntaje += 20
+            if j == 20:
+                valor = int(values[20])/6
+                puntaje += (valor*10)
+            if j == 21:
+                valor = int(values[21])
+                puntaje += (valor*4)
+            if j == 22:
+                valor = int(values[22])
+                puntaje += (valor*4)
+            if j == 23:
+                valor = int(values[23])
+                puntaje += (valor*4)
+            if j == 24:
+                valor = int(values[24])
+                puntaje += (valor*5)
+            if j == 25:
+                valor = int(values[25])
+                puntaje += (valor*5)
+            if j == 26:
+                valor = int(values[26])
+                puntaje += (valor*2)
+            if j == 27:
+                valor = int(values[27])
+                puntaje += (valor*1)
+            if j == 28:
+                valor = int(values[28])
+                puntaje += (valor*2)
+        values = []
+        dic_puntajes[i] = puntaje
+        puntaje=0
+    return dic_puntajes
+from CSV_a_Python import dic_ipress
+dic_puntajes=puntaje(dic_ipress)
