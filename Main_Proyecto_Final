@@ -1,0 +1,22 @@
+from Funcion_puntaje import dic_puntajes
+from CSV_a_Python import dic_distritos_ipress, dic_ipress
+mayor=0
+ipress_eficiente=""
+print("1. Centro de salud más eficiente en su distrito")
+print("2. Mejor centro de salud que cuente con servicios obstétricos")
+opcion = int(input("¿Qué dato desea buscar?: "))
+if opcion == 1:
+    distrito = input("¿En qué distrito reside?: ").upper()
+    for i in dic_distritos_ipress[distrito]:
+        if int(dic_puntajes[i]) > mayor:
+            mayor = int(dic_puntajes[i])
+            ipress_eficiente=i
+    print("El centro de salud más eficiente en tu distrito es: {}".format(ipress_eficiente))
+if opcion == 2:
+    for i in dic_puntajes:
+        if str(dic_ipress[i][10]).upper()=="SI":
+            if int(dic_puntajes[i])>mayor:
+                mayor=int(dic_puntajes[i])
+                ipress_eficiente=i
+    print("El mejor centro de salud de Lima que cuenta con servicios obstétricos es: {}".format(ipress_eficiente))
+
