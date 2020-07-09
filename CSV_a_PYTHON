@@ -1,0 +1,35 @@
+import pandas as pd
+import numpy as np
+from collections import defaultdict
+df = pd.read_csv('IPRESS-FINAL.csv',header=3,nrows=332)
+distritos=["LIMA","CAÑETE","HUAURA","HUARAL"]
+dic_distritos={}
+dic_distritos_ipress=defaultdict(list)
+dic_ipress={}
+distritos_lima = ["SAN JUAN DE LURIGANCHO","EL AGUSTINO","SANTA ANITA","LIMA","BREÑA","SAN MARTIN DE PORRES","CHORRILLOS","SAN BORJA","PUEBLO LIBRE","SAN ISIDRO","COMAS","SAN ISIDRO","LA MOLINA","LINCE","LOS OLIVOS","LA VICTORIA","JESUS MARIA","SANTIAGO DE SURCO","MIRAFLORES","PUENTE PIEDRA","SAN JUAN DE MIRAFLORES"]
+distritos_cañete = ["SAN VICENTE DE CAÑETE"]
+distritos_huaura=["HUACHO"]
+distritos_huaral=["HUARAL"]
+dic_distritos[distritos[0]] = distritos_lima
+dic_distritos[distritos[1]] = distritos_cañete
+dic_distritos[distritos[2]] = distritos_huaura
+dic_distritos[distritos[3]] = distritos_huaral
+ipress_caracteristicas=[]
+for i in range (len(df)):
+    for j in range (len(distritos_lima)):
+        if str(df.iloc[i][4]).upper() == distritos_lima[j]:
+            dic_distritos_ipress[df.iloc[i][4]].append(df.iloc[i][1])
+        if j <= 0 and str(df.iloc[i][4]).upper() == distritos_cañete[j]:
+            dic_distritos_ipress[df.iloc[i][4]].append(df.iloc[i][1])
+        if j <= 0 and str(df.iloc[i][4]).upper() == distritos_huaura[j]:
+            dic_distritos_ipress[df.iloc[i][4]].append(df.iloc[i][1])
+        if j <= 0 and str(df.iloc[i][4]).upper() == distritos_huaral[j]:
+            dic_distritos_ipress[df.iloc[i][4]].append(df.iloc[i][1])
+    for l in range (5,33,1):
+        ipress_caracteristicas.append(df.iloc[i][l])
+    dic_ipress[df.iloc[i][1]] = ipress_caracteristicas
+    ipress_caracteristicas=[]
+#rint(dic_distritos)
+#print(dic_distritos_ipress)
+#print(dic_ipress)
+#print(dic_ipress.values())
