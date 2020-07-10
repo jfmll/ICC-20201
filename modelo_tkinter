@@ -1,0 +1,98 @@
+from tkinter import *
+from tkinter import ttk, messagebox
+from CSV_a_Python import dic_distritos_ipress, dic_ipress
+from Funcion_puntaje import dic_puntajes
+import time
+def send_data():
+    username_data=username.get()
+    userdirection_data=str(userdirection.get())
+
+    print(username_data, "\t", userdirection_data)
+
+    archivo1=open("registration.txt", "w")
+    archivo1.write(username_data)
+    archivo1.write("\t")
+    archivo1.write(userdirection_data)
+    archivo1.write("\n")
+    archivo1.close()
+
+    username_entry.delete(0,END)
+    userdirection_entry.delete(0,END)
+
+def selected(event):
+    if clicked.get()=="January":
+        myLabel=Label(root, text="bien!".pack())
+    else:
+        myLabel = Label(root, text="clicked".get()).pack()
+
+def comboclick(event):
+    #myLabel = Label(root, text=combo.get()).pack()
+    if combo.get() == "January":
+        myLabel=Label(root,text="yees").pack()
+    else:
+        myLabel = Label(root, text=combo.get()).pack()
+
+def abrirventana2():
+    root.withdraw()
+    root2=Toplevel()
+    root2.title("BestHealth")
+    root2.geometry('600x450')
+    root2.configure(background='dark turquoise')
+    titulo2=Label(root2,text='El mejor centro de salud para tu búsqueda es: ', font=("Cambria", 16), background="SkyBlue3", foreground="#FFFFFF", width="250", height="1")
+    titulo2.pack()
+    best_ipress = ""
+    mayor = 0
+    for i in dic_distritos_ipress[combo.get()]:
+        if int(dic_puntajes[i]) > mayor:
+            mayor = int(dic_puntajes[i])
+            best_ipress = i
+    respuesta = Label(root2,text=best_ipress,font=("Cambria", 16),background="#f9d56e", foreground="#FFFFFF")
+    respuesta.place(x=120, y=200)
+    boton_volver=Button(root2,text='Volver', width="30", height="2", background="#E74C3C", command=lambda:[abrirventana1(),root2.destroy()])
+    boton_volver.place(x=185, y=320)
+
+def abrirventana1():
+    root.deiconify()
+
+root= Tk()
+root.geometry("600x450")
+root.title("BestHealth")
+root.resizable(False,False)
+root.config(background="SkyBlue1")
+main_title=Label(text="BestHealth", font=("Cambria", 16), background="SkyBlue3", foreground="#FFFFFF", width="250", height="1")
+main_title.pack()
+
+distritos=["SAN JUAN DE LURIGANCHO","EL AGUSTINO","SANTA ANITA","LIMA","BREÑA","SAN MARTIN DE PORRES","CHORRILLOS","SAN BORJA","PUEBLO LIBRE","SAN ISIDRO","COMAS","SAN ISIDRO","LA MOLINA","LINCE","LOS OLIVOS","LA VICTORIA","JESUS MARIA","SANTIAGO DE SURCO","MIRAFLORES","PUENTE PIEDRA","SAN JUAN DE MIRAFLORES","SAN VICENTE DE CAÑETE"]
+opciones=distritos
+
+username_label=Label(text="Ingresa tu nombre", background="#DEE3F0")
+username_label.place(x=22,y=70)
+userlocation_label=Label(text="Selecciona tu distrito de residencia", background="#DEE3F0")
+userlocation_label.place(x=22,y=130)
+userdirection_label=Label(text="Ingresa tu dirección exacta", background="#DEE3F0")
+userdirection_label.place(x=22,y=190)
+preference2_label=Label(text="Selecciona un tipo de centro de salud", background="#DEE3F0")
+preference2_label.place(x=22,y=250)
+
+username= StringVar()
+userdirection=StringVar()
+preference2=StringVar()
+
+username_entry=Entry(textvariable=username, width="40")
+combo=ttk.Combobox(root, value=opciones)
+combo.current(0)
+combo.bind("comboboxselected", comboclick)
+
+
+userdirection_entry=Entry(textvariable=userdirection, width="40")
+preference2_entry=Entry(textvariable=preference2, width="40")
+
+username_entry.place(x=22, y=100)
+userdirection_entry.place(x=22, y=220)
+preference2_entry.place(x=22, y=280)
+combo.place(x=22,y=160)
+
+boton_registro= Button(root, text="Buscar centro de salud", command=lambda:[send_data(),abrirventana2()], width="30", height="2", background="#E74C3C")
+boton_registro.place(x=22, y=320)
+
+root.mainloop()
