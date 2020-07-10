@@ -19,4 +19,59 @@ if opcion == 2:
                 mayor=int(dic_puntajes[i])
                 ipress_eficiente=i
     print("El mejor centro de salud de Lima que cuenta con servicios obstétricos es: {}".format(ipress_eficiente))
-
+if opcion == 3:
+    for i in dic_puntajes:
+        if str(dic_ipress[i][12]).upper()=="SI":
+            if int(dic_puntajes[i])>mayor:
+                mayor=int(dic_puntajes[i])
+                ipress_eficiente=i
+    print("El mejor centro de salud de Lima que cuenta con servicio de Hemodiálisis es: {}".format(ipress_eficiente))
+if opcion == 4:
+    for i in dic_puntajes:
+        if str(dic_ipress[i][9]).upper()=="SI":
+            if int(dic_puntajes[i])>mayor:
+                mayor=int(dic_puntajes[i])
+                ipress_eficiente=i
+    print("El mejor centro de salud de Lima que cuenta con servicios de rayos x es: {}".format(ipress_eficiente))
+if opcion == 5:
+    for i in dic_puntajes:
+        if int(dic_ipress[i][20])>=12:
+            if int(dic_puntajes[i])>mayor:
+                mayor=int(dic_puntajes[i])
+                ipress_eficiente=i
+    print("El mejor centro de salud de Lima que atiende mas de 12 horas es: {}".format(ipress_eficiente))
+if opcion == 6:
+    for i in dic_puntajes:
+        if int(dic_ipress[i][20])>=24:
+            if int(dic_puntajes[i])>mayor:
+                mayor=int(dic_puntajes[i])
+                ipress_eficiente=i
+    print("El mejor centro de salud de Lima que atiende las 24 horas es: {}".format(ipress_eficiente))
+if opcion == 7:
+    for i in dic_puntajes:
+        if int(dic_ipress[i][9])>0:
+            if int(dic_puntajes[i])>mayor:
+                mayor=int(dic_puntajes[i])
+                ipress_eficiente=i
+    print("El mejor centro de salud de Lima que cuenta con un servicio de ambulancias activo es: {}".format(ipress_eficiente))
+if opcion == 8:
+    for i in dic_puntajes:
+        if int(dic_ipress[i][24])>0:
+            if int(dic_puntajes[i])>mayor:
+                mayor=int(dic_puntajes[i])
+                ipress_eficiente=i
+    print("El mejor centro de salud aun cuenta con camas disponibles: {}".format(ipress_eficiente))
+if opcion == 9:
+    for i in dic_puntajes:
+        if int(dic_ipress[i][4]).upper()=="SI":
+            if int(dic_puntajes[i])>mayor:
+                mayor=int(dic_puntajes[i])
+                ipress_eficiente=i
+    print("El mejor centro de salud de Lima que puenta con un generador electrico: {}".format(ipress_eficiente))
+if opcion == 10:
+    for i in dic_puntajes:
+        if int(dic_ipress[i][2]).upper()=="SI" and int(dic_ipress[i][3]).upper()=="SI":
+            if int(dic_puntajes[i])>mayor:
+                mayor=int(dic_puntajes[i])
+                ipress_eficiente=i
+    print("El mejor centro de salud de Lima cuenta con servicio de agua : {}".format(ipress_eficiente))
